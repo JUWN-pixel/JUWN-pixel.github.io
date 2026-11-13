@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KUETCHE JUWN — Génie logiciel, réseau & cybersécurité</title>
+<meta name="description" content="Portfolio et blog technique : génie logiciel, réseau et cybersécurité.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f4f6fc; --ink:#11142e; --dim:#555b7e; --line:#d9deef; --surface:#ffffff;
+  --blue:#3346ff; --pink:#ff4f9a; --sun:#ffc933; --mint:#12c99b;
+  --display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+  --body:"Instrument Sans","Segoe UI",system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--paper:#0e1024;--ink:#eef0ff;--dim:#9aa0c8;--line:#262a52;--surface:#161938;--blue:#7b88ff}
+}
+:root[data-theme="dark"]{--paper:#0e1024;--ink:#eef0ff;--dim:#9aa0c8;--line:#262a52;--surface:#161938;--blue:#7b88ff}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.65 var(--body)}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--pink);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+
+header.top{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:14px;padding-bottom:14px}
+.brand{font:800 20px var(--display);text-decoration:none;letter-spacing:-.02em}
+nav{display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+nav a{text-decoration:none;color:var(--dim);font-weight:500}
+nav a:hover{color:var(--blue)}
+#theme{background:none;border:1px solid var(--line);color:var(--ink);width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:16px}
+
+/* HERO */
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+#net{position:absolute;inset:0;width:100%;height:100%;display:block}
+.hero .wrap{position:relative;padding-top:clamp(70px,14vw,150px);padding-bottom:clamp(70px,12vw,130px);pointer-events:none}
+.hero .wrap *{pointer-events:auto}
+.hero-grid{display:grid;grid-template-columns:1fr auto;gap:clamp(28px,5vw,64px);align-items:center}
+.portrait{display:block;width:clamp(190px,27vw,300px);aspect-ratio:4/5;object-fit:cover;object-position:50% 30%;border-radius:24px;border:3px solid var(--ink);box-shadow:10px 10px 0 var(--pink);background:var(--surface)}
+@media (max-width:760px){.hero-grid{grid-template-columns:1fr}.portrait{order:-1;width:170px;box-shadow:7px 7px 0 var(--pink)}}
+.hello{color:var(--dim);margin:0 0 18px;font-weight:500}
+h1{font:800 clamp(38px,8.2vw,92px)/1.02 var(--display);letter-spacing:-.035em;margin:0 0 26px;max-width:15ch}
+h1 mark{background:linear-gradient(transparent 62%,var(--sun) 62% 92%,transparent 92%);color:inherit;padding:0 .08em}
+.sub{max-width:52ch;color:var(--dim);font-size:19px;margin:0 0 30px}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-block;padding:12px 22px;border-radius:999px;font-weight:600;text-decoration:none;border:2px solid var(--ink)}
+.btn.main{background:var(--ink);color:var(--paper)}
+.btn.main:hover{background:var(--blue);border-color:var(--blue)}
+.btn.alt:hover{background:var(--ink);color:var(--paper)}
+
+section{padding:clamp(56px,9vw,96px) 0}
+section+section{border-top:1px solid var(--line)}
+h2{font:800 clamp(30px,5vw,48px)/1.1 var(--display);letter-spacing:-.03em;margin:0 0 34px}
+
+/* compétences : trois colonnes ouvertes, pas de cartes */
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:34px}
+.skill h3{font:800 22px var(--display);margin:0 0 6px;display:flex;align-items:center;gap:10px}
+.skill h3::before{content:"";width:14px;height:14px;border-radius:50%;background:var(--c)}
+.skill p{margin:0;color:var(--dim)}
+
+/* projets : lignes larges */
+.proj{display:grid;grid-template-columns:1fr auto;gap:8px 24px;padding:26px 0;border-top:1px solid var(--line);align-items:start}
+.proj:last-child{border-bottom:1px solid var(--line)}
+.proj h3{font:800 clamp(22px,3.4vw,32px)/1.15 var(--display);letter-spacing:-.02em;margin:0;transition:color .2s}
+.proj:hover h3{color:var(--blue)}
+.proj p{grid-column:1;margin:0;color:var(--dim);max-width:58ch}
+.proj .meta{grid-column:2;grid-row:1 / span 2;text-align:right;display:flex;flex-direction:column;gap:10px;align-items:flex-end}
+.pills{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end;margin:0;padding:0;list-style:none}
+.pill{font-size:13px;font-weight:600;padding:2px 11px;border-radius:999px;background:var(--surface);border:1px solid var(--line)}
+.pill[data-k="Réseau"],.pill[data-k="réseau"]{border-color:var(--mint)}
+.pill[data-k="Sécurité"],.pill[data-k="sécurité"],.pill[data-k="ctf"]{border-color:var(--pink)}
+.pill[data-k="JavaScript"],.pill[data-k="dev"]{border-color:var(--blue)}
+.proj .lnk a{font-weight:600;margin-left:14px}
+@media (max-width:640px){.proj{grid-template-columns:1fr}.proj .meta{grid-column:1;grid-row:auto;align-items:flex-start;text-align:left}.pills{justify-content:flex-start}.proj .lnk a{margin:0 14px 0 0}}
+
+/* blog */
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+.filters button{font:500 15px var(--body);background:none;border:1.5px solid var(--line);color:var(--ink);padding:5px 16px;border-radius:999px;cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+details.post{border-top:1px solid var(--line)}
+details.post:last-child{border-bottom:1px solid var(--line)}
+details.post summary{list-style:none;cursor:pointer;display:flex;gap:10px 20px;flex-wrap:wrap;align-items:baseline;padding:20px 0}
+details.post summary::-webkit-details-marker{display:none}
+.date{color:var(--dim);font-size:15px;min-width:6.5em}
+.post-title{font:800 clamp(19px,2.6vw,25px) var(--display);letter-spacing:-.01em;flex:1 1 280px}
+details.post summary:hover .post-title{color:var(--blue)}
+details.post summary::after{content:"+";font:500 26px var(--display);color:var(--dim);margin-left:auto}
+details.post[open] summary::after{content:"–"}
+.post-body{padding:0 0 26px;max-width:66ch;color:var(--ink)}
+.post-body code{background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:1px 6px;font-size:.9em}
+pre{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:14px;overflow-x:auto;font-size:14px}
+
+/* contact */
+.contact{background:var(--ink);color:var(--paper)}
+.contact h2{margin-bottom:18px}
+.contact a{font:800 clamp(22px,4.4vw,44px) var(--display);letter-spacing:-.02em;text-decoration:none;border-bottom:3px solid var(--sun)}
+.contact a:hover{border-color:var(--pink)}
+.contact .more{margin-top:26px;display:flex;gap:22px;flex-wrap:wrap}
+.contact .more a{font:600 17px var(--body);border:0;text-decoration:underline;text-underline-offset:4px}
+footer{padding:26px 0 44px;color:var(--dim);font-size:15px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top">KUETCHE JUWN</a>
+    <nav aria-label="Navigation principale">
+      <a href="#projets">Projets</a><a href="#blog">Blog</a><a href="#contact">Contact</a>
+      <button id="theme" type="button" aria-label="Changer de thème">◐</button>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <canvas id="net" aria-hidden="true"></canvas>
+    <div class="wrap hero-grid">
+     <div>
+      <p class="hello">Bonjour, je suis KUETCHE JUWN.</p>
+      <h1>Je code des logiciels et je sécurise les <mark>réseaux</mark>.</h1>
+      <p class="sub">Étudiant et développeur à l'intersection du génie logiciel, du réseau et de la cybersécurité. Ici, mes projets et ce que j'apprends en chemin.</p>
+      <div class="btns">
+        <a class="btn main" href="#projets">Voir mes projets</a>
+        <a class="btn alt" href="#blog">Lire le blog</a>
+      </div>
+     </div>
+     <img class="portrait" src="photo.jpg" width="800" height="1000" alt="Portrait de KUETCHE JUWN">
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <h2>Ce que je fais</h2>
+      <div class="skills">
+        <div class="skill" style="--c:var(--blue)"><h3>Développement</h3><p>HTML, CSS, JavaScript. Des interfaces rapides et des outils utiles.</p></div>
+        <div class="skill" style="--c:var(--mint)"><h3>Réseau</h3><p>TCP/IP, sous-réseaux, routage, analyse de trafic avec Wireshark.</p></div>
+        <div class="skill" style="--c:var(--pink)"><h3>Cybersécurité</h3><p>Hacking éthique, CTF, bonnes pratiques OWASP.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projets"><div class="wrap">
+    <h2>Projets</h2>
+    <div id="projects"></div>
+  </div></section>
+
+  <section id="blog"><div class="wrap">
+    <h2>Blog</h2>
+    <div class="filters" id="filters" role="group" aria-label="Filtrer par sujet"></div>
+    <div id="posts"></div>
+  </div></section>
+
+  <section class="contact" id="contact"><div class="wrap">
+    <h2>Travaillons ensemble</h2>
+    <a href="mailto:dassibernarad00@gmail.com">dassibernarad00@gmail.com</a>
+    <div class="more">
+      <a href="https://github.com/JUWN-pixel" rel="noopener">GitHub</a>
+    </div>
+  </div></section>
+</main>
+
+<footer><div class="wrap">© <span id="year"></span> KUETCHE JUWN. Fait à la main en HTML, CSS et JS.</div></footer>
+
+<script>
+/* ============ CONTENU À MODIFIER ============ */
+const PROJETS = [
+  { titre: "Calculateur de sous-réseaux",
+    desc: "Calcule plage d'adresses, broadcast et nombre d'hôtes à partir d'une IP et d'un masque.",
+    tags: ["JavaScript", "Réseau"], code: "#", demo: "#" },
+  { titre: "Vérificateur de mots de passe",
+    desc: "Évalue la solidité d'un mot de passe dans le navigateur, sans rien envoyer au serveur.",
+    tags: ["JavaScript", "Sécurité"], code: "#", demo: "#" },
+  { titre: "Mon premier laboratoire réseau",
+    desc: "Maquette de réseau d'entreprise avec VLAN, routage et pare-feu, documentée pas à pas.",
+    tags: ["Réseau"], code: "#", demo: "" }
+];
+const ARTICLES = [
+  { titre: "Comprendre les sous-réseaux sans douleur", date: "2026-11-13", tags: ["réseau"],
+    html: "<p>Un masque <code>/24</code> laisse 8 bits pour les hôtes, soit 254 adresses utilisables.</p><pre>192.168.1.0/24\nréseau    : 192.168.1.0\nbroadcast : 192.168.1.255</pre><p>Remplace ce texte par ton vrai article.</p>" },
+  { titre: "Mon premier CTF : ce que j'ai appris", date: "2026-11-10", tags: ["sécurité", "ctf"],
+    html: "<p>Raconte ici ton premier défi, les outils utilisés et les erreurs à éviter.</p>" },
+  { titre: "Mettre un site en ligne gratuitement", date: "2026-11-05", tags: ["dev"],
+    html: "<p>GitHub Pages, Netlify ou Cloudflare Pages : comparaison et mise en place du HTTPS.</p>" }
+];
+/* ============================================ */
+
+const $ = s => document.querySelector(s);
+const el = (t, c, x) => { const e = document.createElement(t); if (c) e.className = c; if (x != null) e.textContent = x; return e; };
+$("#year").textContent = new Date().getFullYear();
+
+/* thème clair / sombre */
+$("#theme").onclick = () => {
+  const sombre = getComputedStyle(document.documentElement).getPropertyValue("--paper").trim() === "#0e1024";
+  document.documentElement.dataset.theme = sombre ? "light" : "dark";
+  dessiner();
+};
+
+/* projets */
+PROJETS.forEach(p => {
+  const row = el("article", "proj");
+  row.appendChild(el("h3", null, p.titre));
+  row.appendChild(el("p", null, p.desc));
+  const meta = el("div", "meta");
+  const ul = el("ul", "pills");
+  p.tags.forEach(t => { const li = el("li", "pill", t); li.dataset.k = t; ul.appendChild(li); });
+  meta.appendChild(ul);
+  const l = el("div", "lnk");
+  if (p.code) { const a = el("a", null, "Code"); a.href = p.code; l.appendChild(a); }
+  if (p.demo) { const a = el("a", null, "Démo"); a.href = p.demo; l.appendChild(a); }
+  meta.appendChild(l); row.appendChild(meta);
+  $("#projects").appendChild(row);
+});
+
+/* blog */
+const tags = ["tous", ...new Set(ARTICLES.flatMap(a => a.tags))];
+let filtre = "tous";
+function blog() {
+  const box = $("#posts"); box.replaceChildren();
+  ARTICLES.filter(a => filtre === "tous" || a.tags.includes(filtre))
+    .sort((a, b) => b.date.localeCompare(a.date)).forEach(a => {
+      const d = el("details", "post"), s = el("summary");
+      s.appendChild(el("span", "date", a.date));
+      s.appendChild(el("span", "post-title", a.titre));
+      d.appendChild(s);
+      const b = el("div", "post-body"); b.innerHTML = a.html; /* contenu à toi uniquement */
+      d.appendChild(b); box.appendChild(d);
+    });
+}
+function filtres() {
+  const f = $("#filters"); f.replaceChildren();
+  tags.forEach(t => {
+    const b = el("button", null, t); b.type = "button";
+    b.setAttribute("aria-pressed", String(t === filtre));
+    b.onclick = () => { filtre = t; filtres(); blog(); };
+    f.appendChild(b);
+  });
+}
+filtres(); blog();
+
+/* hero : réseau de nœuds qui réagit à la souris */
+const cv = $("#net"), cx = cv.getContext("2d");
+const calme = matchMedia("(prefers-reduced-motion: reduce)").matches;
+let W, H, nodes = [], mouse = { x: -999, y: -999 };
+function init() {
+  const r = cv.getBoundingClientRect(), d = devicePixelRatio || 1;
+  W = r.width; H = r.height; cv.width = W * d; cv.height = H * d; cx.setTransform(d, 0, 0, d, 0, 0);
+  const n = Math.round(Math.min(70, W * H / 14000));
+  nodes = Array.from({ length: n }, () => ({ x: Math.random() * W, y: Math.random() * H, vx: (Math.random() - .5) * .35, vy: (Math.random() - .5) * .35 }));
+}
+function dessiner() {
+  const css = getComputedStyle(document.documentElement);
+  const c1 = css.getPropertyValue("--blue").trim(), c2 = css.getPropertyValue("--pink").trim();
+  cx.clearRect(0, 0, W, H);
+  for (let i = 0; i < nodes.length; i++) {
+    const a = nodes[i];
+    for (let j = i + 1; j < nodes.length; j++) {
+      const b = nodes[j], d = Math.hypot(a.x - b.x, a.y - b.y);
+      if (d < 130) { cx.globalAlpha = (1 - d / 130) * .35; cx.strokeStyle = c1; cx.beginPath(); cx.moveTo(a.x, a.y); cx.lineTo(b.x, b.y); cx.stroke(); }
+    }
+    const m = Math.hypot(a.x - mouse.x, a.y - mouse.y);
+    if (m < 160) { cx.globalAlpha = (1 - m / 160) * .8; cx.strokeStyle = c2; cx.beginPath(); cx.moveTo(a.x, a.y); cx.lineTo(mouse.x, mouse.y); cx.stroke(); }
+    cx.globalAlpha = .9; cx.fillStyle = m < 160 ? c2 : c1;
+    cx.beginPath(); cx.arc(a.x, a.y, 3, 0, 7); cx.fill();
+  }
+  cx.globalAlpha = 1;
+}
+function boucle() {
+  nodes.forEach(n => { n.x += n.vx; n.y += n.vy; if (n.x < 0 || n.x > W) n.vx *= -1; if (n.y < 0 || n.y > H) n.vy *= -1; });
+  dessiner(); requestAnimationFrame(boucle);
+}
+init(); addEventListener("resize", () => { init(); if (calme) dessiner(); });
+cv.parentElement.addEventListener("pointermove", e => { const r = cv.getBoundingClientRect(); mouse = { x: e.clientX - r.left, y: e.clientY - r.top }; });
+cv.parentElement.addEventListener("pointerleave", () => mouse = { x: -999, y: -999 });
+calme ? dessiner() : boucle();
+</script>
+</body>
+</html>
